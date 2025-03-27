@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự đoán giá cổ phiếu SPY</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="header-top">
+            <div class="logo">
+                <img src="../static/img/logo.svg" alt="Logo">
+            </div>
+            <div class="social">
+                <a href="https://www.facebook.com/bae.10485/" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/zaphonene/" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com/hoangthanh.1999" class="twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <nav>
+                <ul>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="https://vn.investing.com/etfs/spdr-s-p-500-historical-data">Tham khảo số liệu</a></li>
+                    <li><a href="{{url_for('index')}}">Giới thiệu</a></li>
+                    <li><a href="/">Tin tức</a></li>
+                    <li><a href="/">Chủ đề</a></li>
+                    <li><a href="/">Các nhà lãnh đạo</a></li>
+                    <li><a href="/">Giáo dục</a></li>
+                    <li><a href="/lienhe">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Dự đoán giá đóng cửa cổ phiếu SPY</h1>
+        <form method="POST">
+            <label for="open">Giá mở cửa (Open):</label>
+            <input type="number" step="0.01" id="open" name="open" placeholder="Nhập giá mở cửa" required title="Giá mở cửa của cổ phiếu"><br><br>
+
+            <label for="high">Giá cao nhất (High):</label>
+            <input type="number" step="0.01" id="high" name="high" placeholder="Nhập giá cao nhất" required title="Giá cao nhất của cổ phiếu trong ngày"><br><br>
+
+            <label for="low">Giá thấp nhất (Low):</label>
+            <input type="number" step="0.01" id="low" name="low" placeholder="Nhập giá thấp nhất" required title="Giá thấp nhất của cổ phiếu trong ngày"><br><br>
+
+            <label for="volume">Khối lượng giao dịch (Volume):</label>
+            <input type="number" id="volume" name="volume" placeholder="Nhập khối lượng giao dịch" required title="Tổng số cổ phiếu được giao dịch trong ngày"><br><br>
+
+            <button type="submit">Dự đoán</button>
+        </form>
+
+        {% if prediction %}
+            <h2>Kết quả dự đoán</h2>
+            <p>Giá đóng cửa dự đoán: 
+                {% if prediction is string %}
+                    {{ prediction }}
+                {% else %}
+                    {{ "%.2f" % prediction }} USD
+                {% endif %}
+            </p>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Dự đoán giá cổ phiếu SPY</p>
+        <p>Được tạo bởi: <a href="https://www.facebook.com/bae.10485/">Gia Phong</a></p>
+    </div>
+</body>
+</html>
