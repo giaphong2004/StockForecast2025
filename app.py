@@ -5,9 +5,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('gioithieu.html')
+    return render_template('index.html')
 
-@app.route('/index',methods=['GET', 'POST'])
+@app.route('/forecast',methods=['GET', 'POST'])
 def index():
     prediction = None
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def index():
             prediction = model.predict_price(open_price, high_price, low_price, volume)
         except ValueError:
             prediction = "Vui lòng nhập số hợp lệ!"
-    return render_template('index.html', prediction=prediction)
+    return render_template('forecast.html', prediction=prediction)
 
 
 if __name__ == '__main__':

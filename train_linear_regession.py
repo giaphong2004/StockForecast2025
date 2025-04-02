@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import mean_absolute_error, r2_score
 
 #2. Đọc dữ liệu
 #gồm các cột : date, open(giá mở cửa), high(giá cao nhất), low(giá thấp nhất), close(giá cuối cùng trong ngày), volume(số lượng gd), Name(tên cổ phiếu)
@@ -50,9 +50,8 @@ def predict_price(open_price, high_price, low_price, volume):
 
 # 9. Đánh giá mô hình
 if __name__ == "__main__":
-    print("Độ lệch trung bình tuyệt đối: ", mean_absolute_error(y_test, y_pred))
-    print("Bình phương sai số trung bình: ", mean_squared_error(y_test, y_pred))
-    print("Hệ số xác định: ", r2_score(y_test, y_pred))
+    print("Độ lệch trung bình tuyệt đối(MAE): ", mean_absolute_error(y_test, y_pred))
+    print("Hệ số xác định(R²): ", r2_score(y_test, y_pred))
 
 # 10. Vẽ biểu đồ
     plt.figure(figsize=(6, 6))
